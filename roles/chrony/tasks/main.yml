@@ -5,7 +5,7 @@
   ansible.builtin.yum:
     name: chrony
     state: present
- 
+
 - name: Start and enable chronyd service
   ansible.builtin.service:
     name: chronyd
