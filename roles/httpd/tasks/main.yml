@@ -13,5 +13,5 @@
 
 - name: copy html to webservers
   ansible.builtin.copy:
-    src: /root/index.html
+    src: index.html
     dest: /var/www/html/index.html
