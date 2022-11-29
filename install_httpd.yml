@@ -1,5 +1,12 @@
 ---
 - hosts: webservers
   roles:
-    - httpd
+    - role: ubuntu_httpd
+      when: ansible_os_family == "ubuntu"
+
+    - role: redhat_httpd
+      when: ansible_os_family == "RedHat"
+
+    - role: redhat_httpd
+      when: ansible_os_family == "centos"
 ...

@@ -1,7 +1,7 @@
 ---
 # tasks file for httpd
 - name: install httpd
-  ansible.builtin.yum:
+  ansible.builtin.apt:
     name: httpd
     state: installed
 
