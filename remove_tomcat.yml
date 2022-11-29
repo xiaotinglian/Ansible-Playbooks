@@ -1,0 +1,17 @@
+---
+- hosts: webservers
+  become: true
+
+  vars: 
+    ansible_become_pass: jenkins  
+
+  tasks:
+    - name: stop tomcat service
+      ansible.builtin.service:
+        name: tomcat
+        state: stopped
+    - name: uninstall tomcat
+      ansible.builtin.yum:
+        name: tomcat* 
+        state: removed        
+...

@@ -4,9 +4,6 @@
     - role: ubuntu_httpd
       when: ansible_os_family == "ubuntu"
 
-    - role: httpd
-      when: ansible_os_family == "RedHat"
-
     - role: redhat_httpd
-      when: ansible_os_family == "centos"
+      when: ansible_os_family == "redhat"
 ...
