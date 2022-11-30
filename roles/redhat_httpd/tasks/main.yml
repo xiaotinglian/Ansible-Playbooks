@@ -13,13 +13,17 @@
 
 - name: copy html to webservers
   ansible.builtin.copy:
-    src: index.html
-    dest: /var/www/html/index.html
+    src: "{{ item }}"
+    dest: /var/www/html/
+  loop:
+    - alpha.html
+    - beta.html
+    - gama.html
+    - index.html
 
 - name: reconfiure httpd port
   template:
     src: httpd.conf.j2
     dest: /etc/httpd/conf/httpd.conf
-
 
   notify: restart httpd
