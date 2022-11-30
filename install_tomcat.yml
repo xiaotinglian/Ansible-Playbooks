@@ -1,7 +1,7 @@
 ---
 - hosts: webservers
   roles:
-    - role: tomcat
+    - role: ubuntu_tomcat
       when: ansible_os_family == "Debian"
-    - role: tomcat
-      when: ansible_os_family == "Redhat"
+    - role: redhat_tomcat
+      when: ansible_os_family == "RedHat"
