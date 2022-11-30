@@ -1,0 +1,25 @@
+---
+# tasks file for apache2
+- name: install apache2
+  ansible.builtin.apt:
+    name: apache2
+    state: present
+
+- name: start and enable apache2
+  ansible.builtin.service:
+    name: apache2
+    state: started
+    enabled: yes
+
+- name: copy html to webservers
+  ansible.builtin.copy:
+    src: index.html
+    dest: /var/www/html/index.html
+
+- name: reconfiure apache2 port
+  template:
+    src: ports.conf.j2
+    dest: /etc/apache2/ports.conf
+
+
+  notify: restart apache2
