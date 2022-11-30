@@ -1,7 +1,8 @@
 ---
 - hosts: webservers
+  become: yes
+  vars:
+    ansible_become_pass: "{{ jenkins_sudo_pass }}"
   roles:
-    - role: ubuntu_tomcat
-      when: ansible_os_family == "Debian"
-    - role: redhat_tomcat
+    - role: tomcat
       when: ansible_os_family == "RedHat"

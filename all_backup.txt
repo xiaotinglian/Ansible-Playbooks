@@ -1,0 +1,2 @@
+---
+jenkins_sudo_users: jenkins@dmin
