@@ -1,0 +1,30 @@
+- name: Create web image
+  hosts: dbservers
+  tasks:
+  - name: getting httpd image from docker hub
+    ansible.builtin.docker_image:
+      name: httpd
+      source: pull
+        
+
+  - name: create web directory
+    ansible.builtin.file:
+      path: /root/workspace
+      state: directory
+  
+  - name: copy whole folder to web directory
+    ansible.builtin.copy:
+      src: /root/ansible/docker/2098_health/
+      dest: /root/workspace/
+      remote_src: yes
+
+  - name: create web image
+    ansible.builtin.docker_container:
+      name: web
+      image: httpd
+      state: started
+      ports:
+        - "8081:80"
+      volumes:
+        - /var/www/html:/usr/local/apache2/htdocs/
+    
